@@ -75,8 +75,13 @@
           "options": {
             "browserTarget": "algorithms-sandbox:build"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "algorithms-sandbox"
 }
