@@ -1,5 +1,9 @@
 https://adrianramzes.github.io/algorithms-sandbox/home
 
+## Deploy
+
+`ng deploy --base-href=/algorithms-sandbox/`
+
 # AlgorithmsSandbox
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.

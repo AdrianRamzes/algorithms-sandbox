@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-outline-primary" (click)="onStartSolutionsAnimationClick()" [disabled]="running">Find Best Starting Point</button>
+            <button class="btn btn-outline-primary" (click)="onStartPathAnimationClick()" [disabled]="running">Show Best Path</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <canvas id="canvas" width="1000" height="600"
+                style="border:1px solid #888888;">
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+    </div>
+</div>
