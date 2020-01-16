@@ -46,7 +46,7 @@ export class NearestNeighbourComponent implements OnInit {
             this.drawDistance(best.distance);
             this.drawNodes(normalizedSolution, 5);
 
-            this.startPathAnimation(normalizedSolution, 500, 2)
+            this.startPathAnimation(normalizedSolution, 500, 1)
         }
     }
 
@@ -88,11 +88,11 @@ export class NearestNeighbourComponent implements OnInit {
     private startPathAnimation(path: TspNode[], delay: number, lineWidth: number = -1): void {
         let prevLineWidth = this.context.lineWidth;
         this.context.lineWidth = lineWidth || prevLineWidth;
-        this.context.beginPath();
         let i = 1;
-        this.context.moveTo(path[0].x, path[0].y);
         let interval = this.betterSetInterval(() => {
             if(i >= path.length) {
+                this.context.beginPath();
+                this.context.moveTo(path[i-1].x, path[i-1].y);
                 this.context.lineTo(path[0].x, path[0].y);
                 this.context.stroke();
                 this.context.lineWidth = prevLineWidth;
@@ -100,6 +100,8 @@ export class NearestNeighbourComponent implements OnInit {
                 this.running = false;
                 return;
             }
+            this.context.beginPath();
+            this.context.moveTo(path[i-1].x, path[i-1].y);
             this.context.lineTo(path[i].x, path[i].y);
             this.context.stroke();
             i++;
