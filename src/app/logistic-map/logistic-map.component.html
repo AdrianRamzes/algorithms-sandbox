@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-outline-primary" (click)="onStartClick()" [disabled]="running">Start</button>
+            <button class="btn btn-outline-primary" (click)="onStopClick()">Stop</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <canvas id="canvas" width="1000" height="600"
+                style="border:1px solid #888888;">
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+    </div>
+</div>

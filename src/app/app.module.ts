@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { TspComponent } from './tsp/tsp.component';
 import { NearestNeighbourComponent } from './tsp/nearest-neighbour/nearest-neighbour.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LogisticMapComponent } from './logistic-map/logistic-map.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HeaderComponent,
     HomeComponent,
     TspComponent,
-    NearestNeighbourComponent
+    NearestNeighbourComponent,
+    LogisticMapComponent
   ],
   imports: [
     BrowserModule,
