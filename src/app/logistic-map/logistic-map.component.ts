@@ -13,7 +13,7 @@ export class LogisticMapComponent implements OnInit {
 
     private r = -2;
     private x = 0.5;
-    
+
     private maxX = 6;// scale form -2 -> 4
     private maxY = 2;// scale form -0.5 -> 1.5
 
@@ -28,7 +28,7 @@ export class LogisticMapComponent implements OnInit {
         this.context.font = "30px Arial";
     }
 
-    private interval: any = -1;
+    private interval = null;
     onStartClick(): void {
 
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -46,7 +46,7 @@ export class LogisticMapComponent implements OnInit {
             }
 
             let lim = this.getLimes(this.r, this.x, 100+Math.random()*10);
-
+            this.PrintR(this.r);
             var normX = count*xStep;
             var normY = (this.canvas.height/this.maxY) * (lim + 0.5);
             this.context.fillRect(normX, normY, 1, 1);
@@ -60,13 +60,42 @@ export class LogisticMapComponent implements OnInit {
         if(this.interval) {
             clearInterval(this.interval);
             this.running = false;
+            this.interval = null;
+        }
+    }
+
+    private intervalX = null;
+    onStartXClick(): void {
+        
+
+        let v = this.x;
+        let r = 3.3;
+        let step = 0.002
+
+        this.running = true;
+        this.intervalX = setInterval(() => {
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            for(let x=0; x< this.canvas.width; x++) {
+                this.context.fillRect(x, this.canvas.height*v, 1, 1);
+                v = r*v*(1-v);
+                x += 1;
+            }
+            r += step;
+            this.PrintR(r);
+        }, 100);
+    }
+
+    onStopXClick(): void {
+        if(this.intervalX) {
+            clearInterval(this.intervalX);
+            this.intervalX = null;
+            this.running = false;
         }
     }
 
     private getLimes(r: number, x: number, iterations: number): number {
         let v = x;
         for (let i = 0; i < iterations; i++) {
-            this.PrintR(r);
             v = r*v * (1-v);
         }
         return v;
